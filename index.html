@@ -217,6 +217,17 @@
   .pics img:nth-child(even) { transform: rotate(2deg); }
   .pics img:hover { transform: rotate(0) scale(1.04); }
 
+  /* ---------- estos días ---------- */
+  .chat { display: grid; gap: 10px; }
+  .chat .cuando { font-size: 14px; font-weight: 700; color: var(--ink-soft); text-align: right; }
+  .burbuja {
+    background: linear-gradient(160deg, #b54bd6 0%, #7b4cf2 55%, #5b5cf5 100%);
+    color: #fff; font-size: 17px; line-height: 1.6; font-weight: 600;
+    padding: 18px 20px; border-radius: 26px 26px 8px 26px;
+    box-shadow: 0 12px 28px rgba(110, 76, 242, .28);
+  }
+  .chat .de { font-size: 14px; color: var(--ink-soft); }
+
   /* ---------- deberes ---------- */
   .unit { margin-bottom: 30px; }
   .unit h3 { font-weight: 700; color: var(--ink); font-size: 18px; margin-bottom: 14px; display: flex; align-items: baseline; gap: 10px; }
@@ -281,7 +292,7 @@
         <p class="sin-importar">sin importarme nada</p>
         <div class="stats">
           <span><b>22</b> diapositivas</span>
-          <span><b>1</b> video</span>
+          <span><b>2</b> videos</span>
           <span><b>1</b> carta</span>
           <span><b>1</b> QR</span>
           <span><b>6</b> detalles</span>
@@ -307,6 +318,7 @@
       <a href="#video">Video</a>
       <a href="#carta">Carta</a>
       <a href="#detalles">Detalles</a>
+      <a href="#estos-dias">Estos días</a>
       <a href="#deberes">Deberes</a>
       <a href="#plan">Plan de trabajo</a>
     </nav>
@@ -413,11 +425,32 @@
     </div>
   </section>
 
-  <!-- ===== 05 Deberes ===== -->
-  <section class="block" id="deberes">
+  <!-- ===== 05 Estos días ===== -->
+  <section class="block" id="estos-dias">
     <div class="wrap">
       <div class="head reveal">
         <span class="num">05</span>
+        <h2>Cómo me afectó estos días cómo me tratas</h2>
+      </div>
+      <div class="video-grid">
+        <div class="card phone reveal">
+          <video src="media/estos-dias.mp4" poster="media/estos-dias-poster.jpg" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="chat reveal">
+          <span class="cuando">El mensaje que te programé el 24 de noviembre</span>
+          <div class="burbuja">
+            Hola Jerson, este mensaje lo estoy enviando el 24 de noviembre, es un mensaje programado, porque no sé qué va a pasar con nosotros el próximo mes, si seguimos juntos o me doy por vencido de cómo me tratas, me ignoras y me dejas en visto, y estarte rogando que me ames o hagas cosas sencillas. Pero si hasta cuando te llegue este mensaje seguimos, te voy a hacer la persona más feliz del mundo porque te amo un montón y mi vida está a tu lado. Solo eso quiero, espero que me ames mucho.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 06 Deberes ===== -->
+  <section class="block" id="deberes">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="num">06</span>
         <h2>Los deberes</h2>
         <p>Tus evaluaciones de 3ro Técnico A, unidad 1 y unidad 2.</p>
       </div>
@@ -468,11 +501,11 @@
     </div>
   </section>
 
-  <!-- ===== 06 Plan de trabajo ===== -->
+  <!-- ===== 07 Plan de trabajo ===== -->
   <section class="block" id="plan">
     <div class="wrap">
       <div class="head reveal">
-        <span class="num">06</span>
+        <span class="num">07</span>
         <h2>El plan de trabajo</h2>
         <p>Para tu candidatura al Consejo Estudiantil.</p>
       </div>
@@ -531,7 +564,10 @@
   function playSong() { song.play().then(() => musicBtn.classList.add('playing')).catch(() => {}); }
   function pauseSong() { song.pause(); musicBtn.classList.remove('playing'); }
   musicBtn.addEventListener('click', () => song.paused ? playSong() : pauseSong());
-  vid.addEventListener('play', pauseSong);
+  document.querySelectorAll('video').forEach(v => v.addEventListener('play', () => {
+    pauseSong();
+    document.querySelectorAll('video').forEach(o => { if (o !== v) o.pause(); });
+  }));
   document.getElementById('start').addEventListener('click', () => {
     playSong();
     document.getElementById('presentacion').scrollIntoView({ behavior: 'smooth' });
