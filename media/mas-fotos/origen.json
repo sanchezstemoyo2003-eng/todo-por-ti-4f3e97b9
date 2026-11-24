@@ -1,0 +1,82 @@
+[
+ {
+  "web": "foto_01.webp",
+  "original": "fotos-originales/IMG_1011.HEIC",
+  "cara": true
+ },
+ {
+  "web": "foto_02.webp",
+  "original": "fotos-originales/IMG_1013.HEIC",
+  "cara": true
+ },
+ {
+  "web": "foto_03.webp",
+  "original": "fotos-originales/IMG_1014.HEIC",
+  "cara": true
+ },
+ {
+  "web": "foto_04.webp",
+  "original": "fotos-originales/IMG_1023.HEIC",
+  "cara": true
+ },
+ {
+  "web": "foto_05.webp",
+  "original": "fotos-originales/IMG_1338.JPG",
+  "cara": false
+ },
+ {
+  "web": "foto_06.webp",
+  "original": "fotos-originales/IMG_1340.JPG",
+  "cara": true
+ },
+ {
+  "web": "foto_07.webp",
+  "original": "fotos-originales/IMG_1341.JPG",
+  "cara": false
+ },
+ {
+  "web": "foto_08.webp",
+  "original": "fotos-originales/IMG_1342.JPG",
+  "cara": false
+ },
+ {
+  "web": "foto_09.webp",
+  "original": "fotos-originales/IMG_1346.JPG",
+  "cara": true
+ },
+ {
+  "web": "foto_10.webp",
+  "original": "fotos-originales/IMG_1347.JPG",
+  "cara": true
+ },
+ {
+  "web": "foto_11.webp",
+  "original": "fotos-originales/IMG_1350.JPG",
+  "cara": true
+ },
+ {
+  "web": "foto_12.webp",
+  "original": "fotos-originales/PHOTO-2025-12-22-22-00-26.jpg",
+  "cara": false
+ },
+ {
+  "web": "foto_13.webp",
+  "original": "fotos-originales/PHOTO-2025-12-22-22-01-10.jpg",
+  "cara": true
+ },
+ {
+  "web": "foto_14.webp",
+  "original": "fotos-originales/PHOTO-2025-12-25-19-11-52.jpg",
+  "cara": true
+ },
+ {
+  "web": "foto_15.webp",
+  "original": "fotos-originales/PHOTO-2025-12-28-17-43-18.jpg",
+  "cara": true
+ },
+ {
+  "web": "foto_16.webp",
+  "original": "redes-sociales/instagram/ig_1_06.jpg",
+  "cara": true
+ }
+]
