@@ -219,10 +219,15 @@
 
   /* ---------- estos días ---------- */
   .fecha {
-    justify-self: start; margin-top: 6px;
     background: var(--rose-soft); color: var(--rose-deep);
     font-weight: 700; font-size: 15px; padding: 6px 14px; border-radius: 999px;
   }
+  .estos { align-items: start; }
+  @media (min-width: 820px) { .estos { grid-template-columns: 360px 360px; justify-content: start; gap: 40px; } }
+  .estos > div { display: grid; gap: 12px; justify-items: center; }
+  @media (min-width: 820px) { .estos > div { justify-items: start; } }
+  .captura { padding: 10px; width: min(360px, 100%); border-radius: 34px; }
+  .captura img { width: 100%; border-radius: 26px; }
   .chat { display: grid; gap: 10px; }
   .chat .cuando { font-size: 14px; font-weight: 700; color: var(--ink-soft); text-align: right; }
   .burbuja {
@@ -319,21 +324,45 @@
   <!-- ===== Índice ===== -->
   <div class="index">
     <nav>
+      <a href="#estos-dias">Estos días</a>
       <a href="#presentacion">Presentación</a>
       <a href="#video">Video</a>
       <a href="#carta">Carta</a>
       <a href="#detalles">Detalles</a>
-      <a href="#estos-dias">Estos días</a>
       <a href="#deberes">Deberes</a>
       <a href="#plan">Plan de trabajo</a>
     </nav>
   </div>
 
-  <!-- ===== 01 Presentación ===== -->
-  <section class="block" id="presentacion">
+  <!-- ===== 01 Estos días ===== -->
+  <section class="block" id="estos-dias">
     <div class="wrap">
       <div class="head reveal">
         <span class="num">01</span>
+        <h2>Cómo me afectó estos días cómo me tratas</h2>
+      </div>
+      <div class="video-grid estos">
+        <div class="reveal">
+          <span class="fecha">23 de noviembre</span>
+          <div class="card phone">
+            <video src="media/estos-dias.mp4" poster="media/estos-dias-poster.jpg" controls playsinline preload="metadata"></video>
+          </div>
+        </div>
+        <div class="reveal">
+          <span class="fecha">El mensaje que te programé</span>
+          <div class="card captura">
+            <img src="media/mensaje-programado.jpg" alt="Mensaje programado para Jerson: Hola Jerson, este mensaje lo estoy enviando el 24 de noviembre…" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 02 Presentación ===== -->
+  <section class="block" id="presentacion">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="num">02</span>
         <h2>La presentación</h2>
         <p>Veintidós diapositivas con nuestras fotos, hechas solo para ti. Con su canción de Mon Laferte.</p>
       </div>
@@ -362,11 +391,11 @@
     </div>
   </section>
 
-  <!-- ===== 02 Video ===== -->
+  <!-- ===== 03 Video ===== -->
   <section class="block" id="video">
     <div class="wrap">
       <div class="head reveal">
-        <span class="num">02</span>
+        <span class="num">03</span>
         <h2>El video</h2>
         <p>Nuestras fotos, una por una, al ritmo de la canción.</p>
       </div>
@@ -386,11 +415,11 @@
     </div>
   </section>
 
-  <!-- ===== 03 Carta y QR ===== -->
+  <!-- ===== 04 Carta y QR ===== -->
   <section class="block" id="carta">
     <div class="wrap">
       <div class="head reveal">
-        <span class="num">03</span>
+        <span class="num">04</span>
         <h2>La carta</h2>
         <p>Una carta para tu día del debate.</p>
       </div>
@@ -405,11 +434,11 @@
     </div>
   </section>
 
-  <!-- ===== 04 Lo que he comprado y lo que subiste ===== -->
+  <!-- ===== 05 Lo que he comprado y lo que subiste ===== -->
   <section class="block" id="detalles">
     <div class="wrap">
       <div class="head reveal">
-        <span class="num">04</span>
+        <span class="num">05</span>
         <h2>Lo que he comprado por ti y lo que has subido en mi IG</h2>
       </div>
       <div class="detalles">
@@ -425,27 +454,6 @@
           <img src="media/detalles/detalle_04.webp" alt="Mi vida" loading="lazy">
           <img src="media/detalles/detalle_05.webp" alt="" loading="lazy">
           <img src="media/detalles/detalle_06.webp" alt="" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 05 Estos días ===== -->
-  <section class="block" id="estos-dias">
-    <div class="wrap">
-      <div class="head reveal">
-        <h2>Cómo me afectó estos días cómo me tratas</h2>
-        <span class="fecha">05 · 23 de noviembre</span>
-      </div>
-      <div class="video-grid">
-        <div class="card phone reveal">
-          <video src="media/estos-dias.mp4" poster="media/estos-dias-poster.jpg" controls playsinline preload="metadata"></video>
-        </div>
-        <div class="chat reveal">
-          <span class="cuando">El mensaje que te programé el 24 de noviembre</span>
-          <div class="burbuja">
-            Hola Jerson, este mensaje lo estoy enviando el 24 de noviembre, es un mensaje programado, porque no sé qué va a pasar con nosotros el próximo mes, si seguimos juntos o me doy por vencido de cómo me tratas, me ignoras y me dejas en visto, y estarte rogando que me ames o hagas cosas sencillas. Pero si hasta cuando te llegue este mensaje seguimos, te voy a hacer la persona más feliz del mundo porque te amo un montón y mi vida está a tu lado. Solo eso quiero, espero que me ames mucho.
-          </div>
         </div>
       </div>
     </div>
@@ -575,7 +583,7 @@
   }));
   document.getElementById('start').addEventListener('click', () => {
     playSong();
-    document.getElementById('presentacion').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('estos-dias').scrollIntoView({ behavior: 'smooth' });
   });
 
   // ---------- presentación ----------
