@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#fff6f3">
+<title>Todo por el amor de mi vida ❤</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fff6f3;
+    --card: #ffffff;
+    --ink: #5b3a3a;
+    --ink-soft: #8a6464;
+    --rose: #e2566f;
+    --rose-deep: #ad1457;
+    --rose-soft: #fde3ea;
+    --peach: #f08a3c;
+    --line: #f6c9d3;
+    --shadow: 0 10px 30px rgba(214, 120, 120, .18);
+    --radius: 22px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background:
+      radial-gradient(circle at 12% 4%, #ffe3ea 0, transparent 32%),
+      radial-gradient(circle at 92% 18%, #ffe9d6 0, transparent 30%),
+      var(--bg);
+    color: var(--ink);
+    font: 500 17px/1.6 "Quicksand", system-ui, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+  img, video { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .script { font-family: "Dancing Script", cursive; font-weight: 700; }
+
+  /* ---------- corazones flotando ---------- */
+  #hearts { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  #hearts span {
+    position: absolute; bottom: -40px; color: var(--rose); opacity: 0;
+    animation: rise linear infinite; will-change: transform, opacity;
+  }
+  @keyframes rise {
+    0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
+    10% { opacity: .5; }
+    90% { opacity: .35; }
+    100% { transform: translate3d(var(--dx), -110vh, 0) rotate(25deg); opacity: 0; }
+  }
+
+  main { position: relative; z-index: 1; }
+  .wrap { width: min(1080px, 100% - 32px); margin-inline: auto; }
+
+  /* ---------- portada ---------- */
+  .hero {
+    min-height: 100svh; display: grid; align-items: center;
+    padding: 72px 0 48px;
+  }
+  .hero .wrap { display: grid; gap: 40px; align-items: center; }
+  @media (min-width: 900px) { .hero .wrap { grid-template-columns: 1.05fr 1fr; } }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 700; font-size: 14px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--peach);
+  }
+  h1 {
+    margin-top: 14px;
+    font-size: clamp(34px, 7.4vw, 64px); line-height: 1.08; font-weight: 700;
+    color: var(--rose-deep); letter-spacing: -.01em;
+    text-wrap: balance;
+  }
+  h1 .script { display: block; color: var(--rose); font-size: 1.22em; line-height: 1.05; margin: 4px 0 2px; }
+  .sin-importar {
+    margin-top: 18px; font-family: "Dancing Script", cursive; font-weight: 600;
+    font-size: clamp(26px, 5.4vw, 38px); color: var(--ink);
+  }
+  .sin-importar::after { content: " ♡"; color: var(--rose); }
+  .stats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+  .stats span {
+    background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 14px; font-size: 14px; font-weight: 700; color: var(--ink-soft);
+  }
+  .stats b { color: var(--rose); }
+  .cta {
+    margin-top: 30px; display: inline-flex; align-items: center; gap: 10px;
+    border: 0; cursor: pointer; text-decoration: none;
+    background: var(--rose); color: #fff; font: 700 17px "Quicksand", sans-serif;
+    padding: 15px 28px; border-radius: 999px; box-shadow: 0 10px 24px rgba(226, 86, 111, .35);
+    transition: transform .2s ease;
+  }
+  .cta:active { transform: scale(.97); }
+  .cta .beat { display: inline-block; animation: beat 1.4s ease-in-out infinite; }
+  @keyframes beat { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.25); } 30% { transform: scale(1); } 45% { transform: scale(1.15); } }
+
+  /* abanico de fotos */
+  .fan { position: relative; height: clamp(300px, 80vw, 470px); }
+  .fan img {
+    position: absolute; width: 46%; aspect-ratio: 1; object-fit: cover;
+    border-radius: 26px; background: #fff; padding: 7px;
+    box-shadow: var(--shadow);
+    animation: bob 6s ease-in-out infinite; will-change: transform;
+  }
+  .fan img:nth-child(1) { left: 2%;  top: 16%; --r: -9deg; animation-delay: -1s; }
+  .fan img:nth-child(2) { left: 27%; top: 0;   --r: 3deg;  z-index: 2; width: 50%; animation-delay: -3s; }
+  .fan img:nth-child(3) { right: 1%; top: 18%; --r: 10deg; animation-delay: -2s; }
+  .fan img:nth-child(4) { left: 12%; bottom: 0; --r: 6deg; width: 40%; z-index: 3; animation-delay: -4s; }
+  .fan img:nth-child(5) { right: 10%; bottom: 2%; --r: -6deg; width: 40%; z-index: 3; animation-delay: -5s; }
+  @keyframes bob { 0%, 100% { transform: rotate(var(--r)) translateY(0); } 50% { transform: rotate(var(--r)) translateY(-8px); } }
+
+  /* ---------- índice ---------- */
+  .index {
+    position: sticky; top: 0; z-index: 5;
+    background: rgba(255, 246, 243, .86); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .index nav {
+    display: flex; gap: 6px; overflow-x: auto; padding: 10px 16px;
+    scrollbar-width: none; justify-content: flex-start;
+  }
+  @media (min-width: 900px) { .index nav { justify-content: center; } }
+  .index nav::-webkit-scrollbar { display: none; }
+  .index a {
+    flex: none; text-decoration: none; font-weight: 700; font-size: 14px; color: var(--ink-soft);
+    padding: 7px 14px; border-radius: 999px; transition: background .2s, color .2s;
+  }
+  .index a.on, .index a:hover { background: var(--rose-soft); color: var(--rose-deep); }
+
+  /* ---------- secciones ---------- */
+  section.block { padding: 72px 0 24px; scroll-margin-top: 54px; }
+  .head { display: grid; gap: 6px; margin-bottom: 26px; max-width: 640px; }
+  .num { font-weight: 700; font-size: 14px; letter-spacing: .14em; color: var(--peach); }
+  h2 { font-family: "Dancing Script", cursive; font-weight: 700; color: var(--rose); font-size: clamp(38px, 8vw, 54px); line-height: 1.05; }
+  .head p { color: var(--ink-soft); }
+  .card {
+    background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
+    border: 1px solid #fbe3e8;
+  }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer;
+    font: 700 15px "Quicksand", sans-serif; padding: 11px 20px; border-radius: 999px;
+    background: var(--rose); color: #fff; border: 0; transition: transform .2s ease;
+  }
+  .btn.ghost { background: var(--card); color: var(--rose-deep); border: 1.5px solid var(--line); }
+  .btn:active { transform: scale(.97); }
+
+  /* aparecer al hacer scroll */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2, .7, .2, 1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- presentación ---------- */
+  .deck { padding: 14px; }
+  .track {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px;
+    scrollbar-width: none; border-radius: 14px; -webkit-overflow-scrolling: touch;
+  }
+  .track::-webkit-scrollbar { display: none; }
+  .track img {
+    flex: 0 0 100%; scroll-snap-align: center; aspect-ratio: 16 / 9; object-fit: cover;
+    border-radius: 14px; background: var(--rose-soft);
+  }
+  .deck-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 4px 2px; }
+  .deck-bar .count { font-weight: 700; color: var(--ink-soft); font-size: 15px; }
+  .arrows { display: flex; gap: 8px; }
+  .arrow {
+    width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--line); background: #fff;
+    color: var(--rose-deep); font-size: 20px; cursor: pointer; display: grid; place-items: center;
+  }
+  .arrow:active { transform: scale(.94); }
+  .dots { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; padding-top: 10px; }
+  .dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--line); transition: all .3s; }
+  .dots i.on { width: 18px; border-radius: 4px; background: var(--rose); }
+
+  /* ---------- video ---------- */
+  .video-grid { display: grid; gap: 28px; align-items: center; }
+  @media (min-width: 820px) { .video-grid { grid-template-columns: 360px 1fr; } }
+  .phone { padding: 10px; width: min(360px, 100%); margin-inline: auto; border-radius: 34px; }
+  .phone video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 26px; background: #2b1a1f; }
+  .video-info h3 { font-family: "Dancing Script", cursive; font-size: 40px; color: var(--rose-deep); line-height: 1.1; }
+  .video-info .meta { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: var(--rose-soft); color: var(--rose-deep); font-weight: 700; font-size: 14px; padding: 5px 12px; border-radius: 999px; }
+
+  /* ---------- carta + qr ---------- */
+  .duo { display: grid; gap: 22px; }
+  @media (min-width: 820px) { .duo { grid-template-columns: 1fr 1fr; } }
+  .duo .card { padding: 18px; display: flex; flex-direction: column; }
+  .duo img { border-radius: 14px; margin-inline: auto; }
+  .duo .card img.qr { width: min(330px, 100%); }
+  .duo .card img.carta { width: min(420px, 100%); }
+  .duo h3 { font-size: 20px; font-weight: 700; color: var(--rose-deep); margin-top: 16px; }
+  .duo p { color: var(--ink-soft); font-size: 16px; }
+
+  /* ---------- detalles ---------- */
+  .detalles { display: grid; gap: 26px; align-items: start; }
+  @media (min-width: 900px) { .detalles { grid-template-columns: 340px 1fr; } }
+  .nota { padding: 26px 24px; border: 1.5px dashed var(--line); }
+  .nota p { font-size: 18px; line-height: 1.65; }
+  .nota p + p { margin-top: 16px; }
+  .nota strong { color: var(--rose); }
+  .nota .firma { margin-top: 18px; font-family: "Dancing Script", cursive; font-size: 30px; color: var(--rose); text-align: right; }
+  .pics { display: grid; gap: 14px; grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 640px) { .pics { grid-template-columns: repeat(3, 1fr); } }
+  .pics img {
+    width: 100%; aspect-ratio: 1; object-fit: cover;
+    filter: drop-shadow(0 8px 16px rgba(214, 120, 120, .22));
+    transition: transform .35s ease;
+  }
+  .pics img:nth-child(odd) { transform: rotate(-2deg); }
+  .pics img:nth-child(even) { transform: rotate(2deg); }
+  .pics img:hover { transform: rotate(0) scale(1.04); }
+
+  /* ---------- deberes ---------- */
+  .unit { margin-bottom: 30px; }
+  .unit h3 { font-weight: 700; color: var(--ink); font-size: 18px; margin-bottom: 14px; display: flex; align-items: baseline; gap: 10px; }
+  .unit h3 small { color: var(--ink-soft); font-weight: 600; font-size: 14px; }
+  .docs { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  @media (min-width: 700px) { .docs { grid-template-columns: repeat(4, 1fr); } }
+  .doc { text-decoration: none; padding: 10px; display: flex; flex-direction: column; transition: transform .25s ease; }
+  .doc:hover { transform: translateY(-4px); }
+  .doc img { aspect-ratio: 494 / 700; object-fit: cover; border-radius: 10px; border: 1px solid #f3e1e4; background: #fff; }
+  .doc b { display: block; margin-top: 10px; font-size: 15px; line-height: 1.35; color: var(--ink); }
+  .doc span { font-size: 13px; color: var(--ink-soft); margin-top: auto; padding-top: 4px; }
+
+  /* ---------- plan ---------- */
+  .plan { display: grid; gap: 24px; padding: 20px; align-items: center; }
+  @media (min-width: 760px) { .plan { grid-template-columns: 240px 1fr; padding: 28px; } }
+  .plan img { width: min(240px, 70%); margin-inline: auto; border-radius: 10px; border: 1px solid #f3e1e4; }
+  .plan h3 { font-size: 22px; color: var(--rose-deep); font-weight: 700; line-height: 1.3; }
+  .plan ul { list-style: none; margin-top: 12px; display: grid; gap: 6px; color: var(--ink-soft); }
+  .plan li::before { content: "♡ "; color: var(--rose); font-weight: 700; }
+  .naranja { color: var(--peach); font-weight: 700; }
+
+  /* ---------- fotos ---------- */
+  .marquee { overflow: hidden; padding: 64px 0 10px; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .marquee .row { display: flex; gap: 14px; width: max-content; animation: slide 60s linear infinite; will-change: transform; }
+  .marquee img { width: 150px; height: 150px; object-fit: cover; border-radius: 22px; }
+  @keyframes slide { to { transform: translate3d(-50%, 0, 0); } }
+
+  footer { text-align: center; padding: 56px 16px calc(56px + env(safe-area-inset-bottom)); }
+  footer .script { font-size: clamp(34px, 7vw, 48px); color: var(--rose); }
+  footer p { color: var(--ink-soft); margin-top: 6px; }
+
+  /* botón de música */
+  #music {
+    position: fixed; z-index: 10; right: 14px; bottom: calc(16px + env(safe-area-inset-bottom));
+    width: 52px; height: 52px; border-radius: 50%; border: 0; cursor: pointer;
+    background: #fff; color: var(--rose); font-size: 22px; box-shadow: 0 6px 20px rgba(173, 20, 87, .25);
+    display: grid; place-items: center;
+  }
+  #music.playing { background: var(--rose); color: #fff; }
+  #music.playing span { animation: beat 1.4s ease-in-out infinite; display: inline-block; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<div id="hearts" aria-hidden="true"></div>
+
+<main>
+  <!-- ===== Portada ===== -->
+  <header class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Para ti, Jerson ♡</span>
+        <h1>Todo lo que he hecho por <span class="script">el amor de mi vida</span></h1>
+        <p class="sin-importar">sin importarme nada</p>
+        <div class="stats">
+          <span><b>22</b> diapositivas</span>
+          <span><b>1</b> video</span>
+          <span><b>1</b> carta</span>
+          <span><b>1</b> QR</span>
+          <span><b>6</b> detalles</span>
+          <span><b>8</b> deberes</span>
+          <span><b>1</b> plan de trabajo</span>
+        </div>
+        <button class="cta" id="start"><span class="beat">❤</span> Ver todo</button>
+      </div>
+      <div class="fan" aria-hidden="true">
+        <img src="media/fotos/nueva_01.webp" alt="">
+        <img src="media/fotos/nueva_14.webp" alt="">
+        <img src="media/fotos/nueva_02.webp" alt="">
+        <img src="media/fotos/nueva_17.webp" alt="">
+        <img src="media/fotos/nueva_12.webp" alt="">
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Índice ===== -->
+  <div class="index">
+    <nav>
+      <a href="#presentacion">Presentación</a>
+      <a href="#video">Video</a>
+      <a href="#carta">Carta y QR</a>
+      <a href="#detalles">Detalles</a>
+      <a href="#deberes">Deberes</a>
+      <a href="#plan">Plan de trabajo</a>
+    </nav>
+  </div>
+
+  <!-- ===== 01 Presentación ===== -->
+  <section class="block" id="presentacion">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="num">01</span>
+        <h2>La presentación</h2>
+        <p>Veintidós diapositivas con nuestras fotos, hechas solo para ti. Con su canción de Mon Laferte.</p>
+      </div>
+      <div class="card deck reveal">
+        <div class="track" id="track"></div>
+        <div class="deck-bar">
+          <span class="count" id="count">1 / 22</span>
+          <div class="arrows">
+            <button class="arrow" id="prev" aria-label="Anterior">‹</button>
+            <button class="arrow" id="next" aria-label="Siguiente">›</button>
+          </div>
+        </div>
+        <div class="dots" id="dots"></div>
+      </div>
+      <div class="btns reveal">
+        <a class="btn" href="https://sanchezstemoyo2003-eng.github.io/para-ti-5029601e/" target="_blank" rel="noopener">▶ Verla con música</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 02 Video ===== -->
+  <section class="block" id="video">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="num">02</span>
+        <h2>El video</h2>
+        <p>Nuestras fotos, una por una, al ritmo de la canción.</p>
+      </div>
+      <div class="video-grid">
+        <div class="card phone reveal">
+          <video id="vid" src="media/quedate-a-mi-lado.mp4" poster="media/quedate-poster.jpg" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-info reveal">
+          <h3>Quédate a mi lado</h3>
+          <div class="meta">
+            <span class="chip">Stand By Me · Ben E. King</span>
+            <span class="chip">50 segundos</span>
+            <span class="chip">33 fotos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 03 Carta y QR ===== -->
+  <section class="block" id="carta">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="num">03</span>
+        <h2>La carta y el QR</h2>
+        <p>Una carta para tu día del debate y una tarjeta con una pregunta escondida.</p>
+      </div>
+      <div class="duo">
+        <div class="card reveal">
+          <img class="carta" src="media/carta.png" alt="Carta: ¡Hoy es tu día! Mucha suerte en el debate" loading="lazy">
+          <h3>¡Hoy es tu día!</h3>
+          <p>Para que fueras tranquilo a debatir por tu lista.</p>
+          <div class="btns"><a class="btn ghost" href="docs/carta-debate.pdf" target="_blank">Abrir la carta</a></div>
+        </div>
+        <div class="card reveal">
+          <img class="qr" src="media/qr.png" alt="Tarjeta con QR: ¿Vas a cambiar o prefieres que me aleje de ti?" loading="lazy">
+          <h3>¿Vas a cambiar o prefieres que me aleje de ti?</h3>
+          <p>Al escanearlo se abre la presentación con música.</p>
+          <div class="btns"><a class="btn ghost" href="https://sanchezstemoyo2003-eng.github.io/para-ti-5029601e/" target="_blank" rel="noopener">Abrir lo que esconde</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 04 Lo que he comprado y lo que subiste ===== -->
+  <section class="block" id="detalles">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="num">04</span>
+        <h2>Lo que he comprado por ti y lo que has subido en mi IG</h2>
+      </div>
+      <div class="detalles">
+        <div class="card nota reveal">
+          <p>Todo lo que gasté por ti nunca fue por el dinero, <strong>era por el detalle</strong>.</p>
+          <p>Y yo sin saber, tú subías fotos en mi IG. Me pareció tan bonito, porque lo hacías <strong>porque me amas</strong> y no querías que tenga a alguien más.</p>
+          <div class="firma">♡</div>
+        </div>
+        <div class="pics reveal">
+          <img src="media/detalles/detalle_01.webp" alt="Te amo mi amor" loading="lazy">
+          <img src="media/detalles/detalle_02.webp" alt="" loading="lazy">
+          <img src="media/detalles/detalle_03.webp" alt="" loading="lazy">
+          <img src="media/detalles/detalle_04.webp" alt="Mi vida" loading="lazy">
+          <img src="media/detalles/detalle_05.webp" alt="" loading="lazy">
+          <img src="media/detalles/detalle_06.webp" alt="" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 05 Deberes ===== -->
+  <section class="block" id="deberes">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="num">05</span>
+        <h2>Los deberes</h2>
+        <p>Tus evaluaciones de 3ro Técnico A, unidad 1 y unidad 2.</p>
+      </div>
+
+      <div class="unit">
+        <h3 class="reveal">Unidad 1 <small>4 evaluaciones</small></h3>
+        <div class="docs">
+          <a class="card doc reveal" href="docs/u1-1-revoluciones-industriales.pdf" target="_blank">
+            <img src="thumbs/u1-1-revoluciones-industriales.jpg" alt="" loading="lazy">
+            <b>Las revoluciones industriales</b><span>Formativa 1 · 7 págs.</span>
+          </a>
+          <a class="card doc reveal" href="docs/u1-2-escuela-clasica.pdf" target="_blank">
+            <img src="thumbs/u1-2-escuela-clasica.jpg" alt="" loading="lazy">
+            <b>La escuela clásica</b><span>Formativa 2 · 7 págs.</span>
+          </a>
+          <a class="card doc reveal" href="docs/u1-3-capitalismo-imperialista.pdf" target="_blank">
+            <img src="thumbs/u1-3-capitalismo-imperialista.jpg" alt="" loading="lazy">
+            <b>El capitalismo imperialista</b><span>Formativa 3 · 4 págs.</span>
+          </a>
+          <a class="card doc reveal" href="docs/u1-sumativa-revolucion-liberal.pdf" target="_blank">
+            <img src="thumbs/u1-sumativa-revolucion-liberal.jpg" alt="" loading="lazy">
+            <b>La Revolución Liberal y Eloy Alfaro</b><span>Sumativa · 8 págs.</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="unit">
+        <h3 class="reveal">Unidad 2 <small>4 evaluaciones</small></h3>
+        <div class="docs">
+          <a class="card doc reveal" href="docs/u2-1-liberalismo.pdf" target="_blank">
+            <img src="thumbs/u2-1-liberalismo.jpg" alt="" loading="lazy">
+            <b>Liberalismo político y económico</b><span>Formativa 1 · 5 págs.</span>
+          </a>
+          <a class="card doc reveal" href="docs/u2-2-proteccionismo-librecambismo.pdf" target="_blank">
+            <img src="thumbs/u2-2-proteccionismo-librecambismo.jpg" alt="" loading="lazy">
+            <b>Proteccionismo y librecambismo</b><span>Formativa 2 · 5 págs.</span>
+          </a>
+          <a class="card doc reveal" href="docs/u2-3-socialismo.pdf" target="_blank">
+            <img src="thumbs/u2-3-socialismo.jpg" alt="" loading="lazy">
+            <b>Socialismo utópico y científico</b><span>Formativa 3 · 5 págs.</span>
+          </a>
+          <a class="card doc reveal" href="docs/u2-4-movimiento-obrero.pdf" target="_blank">
+            <img src="thumbs/u2-4-movimiento-obrero.jpg" alt="" loading="lazy">
+            <b>La doble revolución y el movimiento obrero</b><span>Formativa 4 · 5 págs.</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 06 Plan de trabajo ===== -->
+  <section class="block" id="plan">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="num">06</span>
+        <h2>El plan de trabajo</h2>
+        <p>Para tu candidatura al Consejo Estudiantil.</p>
+      </div>
+      <div class="card plan reveal">
+        <img src="thumbs/plan-de-trabajo-consejo.jpg" alt="Primera página del plan de trabajo" loading="lazy">
+        <div>
+          <h3>Plan de Trabajo del Consejo Estudiantil</h3>
+          <ul>
+            <li>U. E. «Juan Benigno Vela»</li>
+            <li>Año lectivo 2026 – 2027</li>
+            <li>Lista <span class="naranja">naranja</span> · Liderazgo y responsabilidad</li>
+            <li>4 páginas</li>
+          </ul>
+          <div class="btns">
+            <a class="btn" href="docs/plan-de-trabajo-consejo.pdf" target="_blank">Abrir PDF</a>
+            <a class="btn ghost" href="docs/plan-de-trabajo-consejo.docx" download>Descargar Word</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Fotos ===== -->
+  <div class="marquee" aria-hidden="true"><div class="row" id="row"></div></div>
+
+  <footer>
+    <div class="script">Con todo mi amor</div>
+    <p>Para Jerson ♡</p>
+  </footer>
+</main>
+
+<button id="music" aria-label="Música"><span>♫</span></button>
+<audio id="song" src="media/cancion.mp3" loop preload="none"></audio>
+
+<script>
+  // ---------- corazones de fondo ----------
+  (function () {
+    const box = document.getElementById('hearts');
+    const n = window.innerWidth < 600 ? 10 : 16;
+    for (let i = 0; i < n; i++) {
+      const s = document.createElement('span');
+      s.textContent = '♥';
+      s.style.left = Math.random() * 100 + 'vw';
+      s.style.fontSize = 10 + Math.random() * 16 + 'px';
+      s.style.setProperty('--dx', (Math.random() * 80 - 40) + 'px');
+      s.style.animationDuration = 14 + Math.random() * 14 + 's';
+      s.style.animationDelay = -Math.random() * 28 + 's';
+      box.appendChild(s);
+    }
+  })();
+
+  // ---------- música ----------
+  const song = document.getElementById('song');
+  const musicBtn = document.getElementById('music');
+  const vid = document.getElementById('vid');
+  function playSong() { song.play().then(() => musicBtn.classList.add('playing')).catch(() => {}); }
+  function pauseSong() { song.pause(); musicBtn.classList.remove('playing'); }
+  musicBtn.addEventListener('click', () => song.paused ? playSong() : pauseSong());
+  vid.addEventListener('play', pauseSong);
+  document.getElementById('start').addEventListener('click', () => {
+    playSong();
+    document.getElementById('presentacion').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // ---------- presentación ----------
+  const TOTAL = 22;
+  const track = document.getElementById('track');
+  const dots = document.getElementById('dots');
+  const count = document.getElementById('count');
+  for (let i = 1; i <= TOTAL; i++) {
+    const img = document.createElement('img');
+    img.src = 'media/slides/' + String(i).padStart(2, '0') + '.jpg';
+    img.alt = 'Diapositiva ' + i;
+    if (i > 2) img.loading = 'lazy';
+    track.appendChild(img);
+    dots.appendChild(document.createElement('i'));
+  }
+  let cur = 0;
+  function mark(i) {
+    cur = i;
+    count.textContent = (i + 1) + ' / ' + TOTAL;
+    [...dots.children].forEach((d, k) => d.classList.toggle('on', k === i));
+  }
+  function go(i) {
+    i = (i + TOTAL) % TOTAL;
+    track.scrollTo({ left: track.children[i].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+  }
+  track.addEventListener('scroll', () => {
+    const i = Math.round(track.scrollLeft / (track.children[0].offsetWidth + 12));
+    if (i !== cur) mark(Math.max(0, Math.min(TOTAL - 1, i)));
+  }, { passive: true });
+  document.getElementById('prev').onclick = () => go(cur - 1);
+  document.getElementById('next').onclick = () => go(cur + 1);
+  mark(0);
+
+  // ---------- fotos en cinta ----------
+  const row = document.getElementById('row');
+  const fotos = [1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+    .map(n => 'media/fotos/nueva_' + String(n).padStart(2, '0') + '.webp');
+  [...fotos, ...fotos].forEach(src => {
+    const img = document.createElement('img');
+    img.src = src; img.alt = ''; img.loading = 'lazy';
+    row.appendChild(img);
+  });
+
+  // ---------- aparecer al hacer scroll + índice activo ----------
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const links = [...document.querySelectorAll('.index a')];
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
+    const on = links.find(a => a.classList.contains('on')), nav = on && on.parentElement;
+    if (on) nav.scrollTo({ left: on.offsetLeft - (nav.clientWidth - on.offsetWidth) / 2, behavior: 'smooth' });
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('section.block').forEach(s => spy.observe(s));
+</script>
+</body>
+</html>
