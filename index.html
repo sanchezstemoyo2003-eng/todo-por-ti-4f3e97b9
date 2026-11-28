@@ -237,6 +237,7 @@
   @media (min-width: 820px) { .estos { grid-template-columns: 360px 360px; justify-content: start; gap: 40px; } }
   .estos > div { display: grid; gap: 12px; justify-items: center; }
   @media (min-width: 820px) { .estos > div { justify-items: start; } }
+  .dias { margin-top: 44px; row-gap: 44px; }
   .captura { padding: 10px; width: min(360px, 100%); border-radius: 34px; }
   .captura img { width: 100%; border-radius: 26px; }
   .chat { display: grid; gap: 10px; }
@@ -313,7 +314,7 @@
         <p class="sin-importar">sin importarme nada</p>
         <div class="stats">
           <span><b>22</b> diapositivas</span>
-          <span><b>2</b> videos</span>
+          <span><b>6</b> videos</span>
           <span><b>1</b> carta</span>
           <span><b>1</b> QR</span>
           <span><b>6</b> detalles</span>
@@ -363,6 +364,33 @@
           <span class="fecha">El mensaje que te programé</span>
           <div class="card captura">
             <img src="media/mensaje-programado.jpg" alt="Mensaje programado para Jerson: Hola Jerson, este mensaje lo estoy enviando el 24 de noviembre…" loading="lazy">
+          </div>
+        </div>
+      </div>
+      <!-- los días siguientes: la fecha es la que se dice en cada video -->
+      <div class="video-grid estos dias">
+        <div class="reveal">
+          <span class="fecha">24 de noviembre</span>
+          <div class="card phone">
+            <video src="media/dias/dia-24-nov.mp4" poster="media/dias/dia-24-nov.jpg" controls playsinline preload="none"></video>
+          </div>
+        </div>
+        <div class="reveal">
+          <span class="fecha">25 de noviembre</span>
+          <div class="card phone">
+            <video src="media/dias/dia-25-nov.mp4" poster="media/dias/dia-25-nov.jpg" controls playsinline preload="none"></video>
+          </div>
+        </div>
+        <div class="reveal">
+          <span class="fecha">26 de noviembre</span>
+          <div class="card phone">
+            <video src="media/dias/dia-26-nov.mp4" poster="media/dias/dia-26-nov.jpg" controls playsinline preload="none"></video>
+          </div>
+        </div>
+        <div class="reveal">
+          <span class="fecha">27 de noviembre</span>
+          <div class="card phone">
+            <video src="media/dias/dia-27-nov.mp4" poster="media/dias/dia-27-nov.jpg" controls playsinline preload="none"></video>
           </div>
         </div>
       </div>
